@@ -29,11 +29,8 @@ async function displayBreachInfo(data) {
     breachInfoElement.innerHTML = htmlContent;
 }
 function getTabInfo() {
-    // Get the current active tab
     chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
-    // tabs[0] contains information about the active tab
     const activeTab = tabs[0];
-    // Log the URL and domain
     let badUrl = extractDomainName(activeTab.url).split(".");
     console.log(badUrl);
     var goodUrl = extractDomainName(activeTab.url);
@@ -52,13 +49,11 @@ function getTabInfo() {
 });
 }
 
-  // Function to extract domain name from URL
 function extractDomainName(url) {
     const urlObject = new URL(url);
     return urlObject.hostname;
 }
 
-  // Call the function to get tab information
 getTabInfo();
 
 
