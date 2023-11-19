@@ -1,6 +1,6 @@
 # Phishing Detection Chrome Extension
 
-![Phishing Detection](logo.png)
+![Phishing Detection](logo.jpeg)
 
 ## Overview
 
