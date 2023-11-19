@@ -15,7 +15,7 @@ async function displayBreachInfo(data) {
     if(data == "Unexpected end of JSON input"){
         htmlContent = "There have not been any recent data breaches on this website!";
         var imgElement = document.createElement("img");
-        imgElement.src = "https://w7.pngwing.com/pngs/270/706/png-transparent-check-mark-computer-icons-green-tick-mark-angle-text-logo.png";
+        imgElement.src = "./resource/check.png";
         imgElement.alt = "this is an image";
         imgElement.width = 120;
         imgElement.height = 120;
