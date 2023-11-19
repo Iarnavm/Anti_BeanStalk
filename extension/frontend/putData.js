@@ -1,14 +1,21 @@
 async function hibpData(domainName) {
+    try{
 	const response = await fetch("https://haveibeenpwned.com/api/v2/breach/" + domainName);
 	const data = await response.json();
 	console.log(data);
-	return data;	
+	return data;
+    } catch(error){
+        return error.message;
+    }
 }
 
 async function displayBreachInfo(data) {
     const breachInfoElement = document.querySelector('.content');
-
-    const htmlContent = `
+    var htmlContent;
+    if(data == "Unexpected end of JSON input"){
+        htmlContent = "There have not been any recent data breaches on this website!";
+    }
+    else htmlContent = `
         <h1>${data.Name} Data Breach Information</h1>
         <img src="${data.LogoPath}" alt="${data.Name} Logo" width="100">
         <p><strong>Name:</strong> ${data.Name}</p>
