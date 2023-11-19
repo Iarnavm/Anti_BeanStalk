@@ -1,4 +1,4 @@
-# Phishing Detection with machine learning
+# Phishing Detection with Machine Learning
 
 ![Phishing Detection](logo.jpeg)
 
