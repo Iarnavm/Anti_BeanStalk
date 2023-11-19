@@ -1,6 +1,10 @@
-import hibpData from "./findData";
+async function hibpData(domainName) {
+	const response = await fetch("https://haveibeenpwned.com/api/v2/breach/" + domainName);
+	const data = await response.json();
+	console.log(data);
+	return data;	
+}
 
-console.log("dsfsfd");
 async function displayBreachInfo(data) {
     const breachInfoElement = document.querySelector('.content');
 
@@ -24,11 +28,38 @@ async function displayBreachInfo(data) {
 
     breachInfoElement.innerHTML = htmlContent;
 }
+function getTabInfo() {
+    // Get the current active tab
+    chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
+    // tabs[0] contains information about the active tab
+    const activeTab = tabs[0];
+    // Log the URL and domain
+    let badUrl = extractDomainName(activeTab.url).split(".");
+    console.log(badUrl);
+    var goodUrl = extractDomainName(activeTab.url);
+    console.log(goodUrl);
+    if(badUrl[0] == 'www')
+        goodUrl = badUrl[1];
+    else
+        goodUrl = badUrl[0];
+    console.log(goodUrl);
+    const breachData = hibpData(goodUrl)
+    .then(response => {
+        displayBreachInfo(response);
+        console.log(response);
+    });
 
-breachData = hibpData("facebook").then(response => response.json())
-.then(response => {
-    displayBreachInfo(response);
-    console.log(response);
 });
+}
 
-console.log("dafadsf");
+  // Function to extract domain name from URL
+function extractDomainName(url) {
+    const urlObject = new URL(url);
+    return urlObject.hostname;
+}
+
+  // Call the function to get tab information
+getTabInfo();
+
+
+
