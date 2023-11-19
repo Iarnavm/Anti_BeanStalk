@@ -34,7 +34,12 @@ async function setTarget(domainName)
         console.log(data.phishingWebsite);
         counter.innerHTML = Math.round(data.phishingWebsite * 100);
         if(Math.round(data.phishingWebsite * 100) > 50){
+            
+            
             for(var i = 0; i < 100; i++){
+                chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+                    chrome.tabs.goBack(tabs[0].id);
+                });
                 rating.innerHTML += "<div class = 'block'></div>"
                 block[i].style.backgroundColor = "red";
                 block[i].style.boxShadow = "0 0 15px red,0 0 30px red";
@@ -42,16 +47,7 @@ async function setTarget(domainName)
         }        
     });
 }
-/*
-for(var i = 1; i < 100; i++){
-            rating.innerHTML += "<div class = 'block'></div>"
-            block[i].style.transform = "rotate(" + 3.6 * i + "deg)";
-            block[i].style.animationDelay = `${i/40}s`;
-        }
-        const counter = document.querySelector('.counter');
-        counter.innerHTML = response.phishingWebsite;
-        console.log(response);
-*/
+
 async function displayBreachInfo(data) 
 { 
     const breachInfoElement = document.querySelector('.content');
