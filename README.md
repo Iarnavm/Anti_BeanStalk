@@ -1,10 +1,3 @@
----
-title: "Phishing Detection Chrome Extension"
-output: 
-  html_document:
-    theme: spacelab
----
-
 # Phishing Detection Chrome Extension
 
 ![Phishing Detection](https://your-image-url.com/phishing_detection_logo.png)
