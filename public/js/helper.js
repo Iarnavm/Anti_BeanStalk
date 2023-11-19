@@ -72,10 +72,9 @@ async function testIfWebsitePhishy(url)
   if(output.dense_3.data[0] > 0.5)
   {
     console.log("Returning True!")
-    return true;
   }
   console.log("Returning False!")
-  return false;
+  return output.dense_3.data[0];
 }
 
 module.exports = {listForModel, testIfWebsitePhishy};
