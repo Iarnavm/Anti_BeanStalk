@@ -1,4 +1,4 @@
-# Phishing Detection Chrome Extension
+# Phishing Detection with machine learning
 
 ![Phishing Detection](logo.jpeg)
 
