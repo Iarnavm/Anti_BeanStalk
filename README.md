@@ -1,6 +1,6 @@
 # Phishing Detection Chrome Extension
 
-![Phishing Detection](https://your-image-url.com/phishing_detection_logo.png)
+![Phishing Detection](logo.png)
 
 ## Overview
 
@@ -45,12 +45,11 @@ Phishing Detection Chrome Extension is a browser extension built to enhance your
 2. Click on the extension icon in the toolbar to analyze the current website.
 3. The extension will send a request to the AWS API, and the result will be displayed.
 
-## Configuration
+## Contributing
 
-In the `config.js` file, you can customize the API endpoint and other settings as needed.
+We welcome contributions! Feel free to open issues, submit pull requests, or provide feedback.
 
-```javascript
-module.exports = {
-  apiEndpoint: 'https://your-aws-api-endpoint.com',
-  // Add other configuration options here
-};
+## Acknowledgments
+
+1. Special thanks to AWS for providing a robust infrastructure for hosting the phishing detection model.
+2. ONNX community for their work on standardizing neural network models.
