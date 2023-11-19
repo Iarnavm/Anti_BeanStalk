@@ -1,0 +1,11 @@
+{
+  "name": "hibp-backend",
+  "version": "1.0.0",
+  "description": "the backend service for hibp extension",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "author": "",
+  "license": "ISC"
+}
