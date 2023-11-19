@@ -4,7 +4,12 @@
     "description": "Base Level Extension",
     "version": "1.0",
     "action": {
-      "default_popup": "display.html"
-    }
-  }
+      "default_popup": "frontend/display.html"
+    },
+    "permissions" : [
+        "tabs",
+        "activeTab"
+    ],
+    "lastFocusedWindow" : true
+}
   
