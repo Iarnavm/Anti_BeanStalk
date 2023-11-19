@@ -14,6 +14,13 @@ async function displayBreachInfo(data) {
     var htmlContent;
     if(data == "Unexpected end of JSON input"){
         htmlContent = "There have not been any recent data breaches on this website!";
+        var imgElement = document.createElement("img");
+        imgElement.src = "./resource/check.png";
+        imgElement.alt = "this is an image";
+        imgElement.width = 120;
+        imgElement.height = 120;
+        breachInfoElement.appendChild(imgElement);
+        breachInfoElement.innerHTML += "<br>";
     }
     else htmlContent = `
         <h1>${data.Name} Data Breach Information</h1>
@@ -27,13 +34,14 @@ async function displayBreachInfo(data) {
         <p><strong>Pwn Count:</strong> ${data.PwnCount}</p>
 
         <h2>Description</h2>
-        <p>${data.Description}</p>
+        <p>${data.Description}</p><br>
 
         <h2>Data Classes</h2>
-        <ul>${data.DataClasses.map(dataClass => `<li>${dataClass}</li>`).join('')}</ul>
+        ${data.DataClasses.map(dataClass => `${dataClass}<br>`).join('')}
+        <br><br>
     `;
 
-    breachInfoElement.innerHTML = htmlContent;
+    breachInfoElement.innerHTML += htmlContent;
 }
 function getTabInfo() {
     chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
