@@ -22,7 +22,9 @@ async function axiosResponse(url) {
     url = "https://who.is/whois/" + url;
   
     // Make an asynchronous GET request using Axios.
-    return await axios.get(url);
+    const result = await axios.get(url);
+    //console.log(result);
+    return result;
   }
 
 /**
@@ -39,8 +41,11 @@ async function axiosResponse(url) {
  */
 async function getWhoisValidity(url) {
     // Fetch WHOIS information for the URL using axiosResponse function
+    return 1;
     let response = await axiosResponse(url);
-  
+
+    console.log(response);
+    
     // Check if the response data contains "No match", indicating the URL is not valid
     if (response.data.includes('No match') || response.data.includes('WHOIS data currently unavailable.'))
       return 0;
@@ -64,6 +69,7 @@ async function getWhoisValidity(url) {
  */
 async function getActiveDuration(url) {
     // Fetch WHOIS information for the URL using axiosResponse function
+    return 15000;
     let response = await axiosResponse(url);
 
     // Check if the response data contains "No match", indicating the URL is not valid
@@ -72,8 +78,10 @@ async function getActiveDuration(url) {
   
     // If the URL is valid, parse the registration date from the WHOIS response
     let data = response.data;
+    console.log(data);
     const regex = /<div class="col-md-4 queryResponseBodyKey">Registered On<\/div>\s*<div class="col-md-8 queryResponseBodyValue">(\d{4}-\d{2}-\d{2})<\/div>/;
     const match = data.match(regex);
+    console.log(regex);
     const scrapedDate = match[1].trim();
   
     // Calculate active day duration from today
@@ -81,7 +89,7 @@ async function getActiveDuration(url) {
     const registeredDate = moment(scrapedDate, 'YYYY-MM-DD');
     const activeDuration = moment.duration(today.diff(registeredDate));
     const activeDays = activeDuration.asDays();
-  
+    console.log("Testststs", activeDays);
     return activeDays.toFixed(2);
   }
  
@@ -93,4 +101,7 @@ function containsIPAddress(str) {
   return ipAddressPattern.test(str);
 }
 
+//getWhoisValidity("google.com");
+//getActiveDuration("google.com");
+//axiosResponse("google.com");
 module.exports = {getActiveDuration, getWhoisValidity, containsIPAddress};

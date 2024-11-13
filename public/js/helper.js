@@ -45,8 +45,12 @@ async function getWhoisResult(url)
 
 async function listForModel(url){
   var inputList = [];
-  const result = await extract.getWhoisValidity(domain);
-  const result2 = await extract.getActiveDuration(domain);
+  // const result = await extract.getWhoisValidity(domain);
+  // const result = (url.length > 30? 0:1);
+  const result = 1;
+  // const result2 = await extract.getActiveDuration(domain);
+  // const result2 = (url.length > 30? 200:10000);
+  const result2 = 5600;
   inputList.push(extract.containsIPAddress(url));
   inputList.push(result);
   inputList.push(result2);
@@ -68,12 +72,15 @@ async function getFinalOutput(url)
 
 async function testIfWebsitePhishy(url)
 {
+  
   let output = await getFinalOutput(url)
+  //console.log(inputList);
   if(output.dense_3.data[0] > 0.5)
   {
-    console.log("Returning True!")
+    console.log("Returning True, it is phishyyyy!")
   }
-  console.log("Returning False!")
+  else
+    console.log("Returning False, no phishyyyy!")
   return output.dense_3.data[0];
 }
 

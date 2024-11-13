@@ -22,7 +22,7 @@ async function hibpData(domainName)
 async function setTarget(domainName)
 {
     var garbage = {"websiteURL": "www." + domainName + ".com"}
-    fetch("http://phishwarden-env.eba-qwxkz56x.ap-south-1.elasticbeanstalk.com/", {
+    fetch("http://localhost:8080/", {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
